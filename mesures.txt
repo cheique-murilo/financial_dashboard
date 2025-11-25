@@ -1,0 +1,29 @@
+# Mesures examples:
+
+
+Transações = COUNTROWS('Movimentações')
+
+Transações PIX = CALCULATE(
+    COUNTROWS('Movimentações'),
+    'Movimentações'[Forma Pagamento]="PIX"
+	)
+
+Receita = CALCULATE(
+    SUM('Movimentações'[Valor da Movimentação]),
+    'Movimentações'[Tipo]="Recebimento"
+	)
+
+% PIX = [Transações PIX]/[Transações]
+
+Desvio Margem = [Margem]-0.3
+
+Imposto = [Receita]*0.15
+
+Lucro = [Receita]-[Despesas]-[Imposto]
+
+Margem Auxiliar = 1-[Margem]
+
+Receita = CALCULATE(
+    SUM('Movimentações'[Valor da Movimentação]),
+    'Movimentações'[Tipo]="Recebimento"
+	)
